@@ -74,7 +74,8 @@ def count_characters(file_path):
                 if char == files_contents[i]:
                     alphabet_counter[char] += 1 
 
-        return alphabet_counter
+        for i in range(0, len(alphabet)):
+            print(f"The {alphabet[i]} character was found {alphabet_counter[alphabet[i]]} times")
 
 
 
@@ -86,8 +87,12 @@ def main():
         files_contents = f.read()
         print(files_contents)
     
-    print(f" Word count: {count_words(file_path)}")
-    print(f" Character count: {count_characters(file_path)}")
+    # print(f" Word count: {count_words(file_path)}")
+    # print(f" Character count: {count_characters(file_path)}")
+    print(f"--- Begin report of {file_path} ---")
+    print(f"{count_words(file_path)} words found in the document")
+    count_characters(file_path)
+    print("--- End report ---")
 
 
 main()
