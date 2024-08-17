@@ -79,22 +79,32 @@ def count_characters(file_path):
 def main():
     # file_path = "books/frankenstein.txt"
     while True:
-        print("Choose option:")
+        print("--- Choose option: ---")
         print("1. File text report.")
         print("2. Exit.")
         user_input = input()
         if user_input == '2':
             break
+        elif user_input == '1':
+            try: 
+                file_path = input("Enter file path:")
+                
+                with open(file_path) as f:
+                    files_contents = f.read()
+                    print(files_contents)
+                
+                    print(f"--- Begin report of {file_path} ---")
+                    print(f"{count_words(file_path)} words found in the document")
+                    count_characters(file_path)
+                    print("--- End report ---")
+                    print("File path not found.")
+            except Exception:
+                print("File path not found.")
+                print(" ")
         else:
-            file_path = input("Enter file path:")
-            with open(file_path) as f:
-                files_contents = f.read()
-                print(files_contents)
-            
-            print(f"--- Begin report of {file_path} ---")
-            print(f"{count_words(file_path)} words found in the document")
-            count_characters(file_path)
-            print("--- End report ---")
+            print("Invalid input. Please enter one of the option numbers.")
+            print(" ")
+                
 
 
 main()
