@@ -36,6 +36,7 @@ def count_characters(file_path):
         'y': 0,
         'z': 0,
         }
+
     alphabet = [
         'a',
         'b',
@@ -66,9 +67,7 @@ def count_characters(file_path):
     ]
 
     with open(file_path) as f:
-
         files_contents = f.read().lower()
-        
         for i in range(0, len(files_contents)):
             for char in alphabet:
                 if char == files_contents[i]:
@@ -77,22 +76,25 @@ def count_characters(file_path):
         for i in range(0, len(alphabet)):
             print(f"The {alphabet[i]} character was found {alphabet_counter[alphabet[i]]} times")
 
-
-
-
-
 def main():
-    file_path = "books/frankenstein.txt"
-    with open(file_path) as f:
-        files_contents = f.read()
-        print(files_contents)
-    
-    # print(f" Word count: {count_words(file_path)}")
-    # print(f" Character count: {count_characters(file_path)}")
-    print(f"--- Begin report of {file_path} ---")
-    print(f"{count_words(file_path)} words found in the document")
-    count_characters(file_path)
-    print("--- End report ---")
+    # file_path = "books/frankenstein.txt"
+    while True:
+        print("Choose option:")
+        print("1. File text report.")
+        print("2. Exit.")
+        user_input = input()
+        if user_input == '2':
+            break
+        else:
+            file_path = input("Enter file path:")
+            with open(file_path) as f:
+                files_contents = f.read()
+                print(files_contents)
+            
+            print(f"--- Begin report of {file_path} ---")
+            print(f"{count_words(file_path)} words found in the document")
+            count_characters(file_path)
+            print("--- End report ---")
 
 
 main()
